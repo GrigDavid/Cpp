@@ -3,14 +3,14 @@
 #include <string>
 #include "Contact.hpp"
 
-
-class PhoneBook{
+class	PhoneBook{
 	public:
 		PhoneBook();
+		void	Input();
 		void	AddContact(Contact newContact);
-		Contact	SearchContact(int id);
+		void	SearchContact(int id);
 		~PhoneBook();
 	private:
-		Contact	Contacts[8];
-		int		id;
+		Contact	m_Contacts[8];//replace with array<Contact, 8> maybe???
+		int		m_lastId;
 };
