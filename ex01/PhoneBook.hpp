@@ -1,7 +1,8 @@
-#pragma once
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-#include <string>
-#include "Contact.hpp"
+# include <string>
+# include "Contact.hpp"
 
 class	PhoneBook{
 	public:
@@ -14,3 +15,5 @@ class	PhoneBook{
 		Contact	m_Contacts[8];//replace with array<Contact, 8> maybe???
 		int		m_lastId;
 };
+
+#endif

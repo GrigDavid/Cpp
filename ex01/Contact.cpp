@@ -1,4 +1,6 @@
 #include "Contact.hpp"
+#include <iostream>
+#include <iomanip>
 
 Contact::Contact()
 {
@@ -54,7 +56,24 @@ int Contact::getId()const
 	return m_id;
 };
 
-void	Contact::printContact() const
+std::string Contact::trimString(std::string str) const
 {
+	if (str.length() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str);
+}
+
+void Contact::printContact() const
+{
+	std::cout << std::setw(10) << std::right << m_id << "|";
+	std::cout << std::setw(10) << trimString(m_firstName) << "|";
+	std::cout << std::setw(10) << trimString(m_lastName) << "|";
+	std::cout << std::setw(10) << trimString(m_nickname) << std::endl;
+	
+	
+	
+	
+	
+	
 	//iomanip
 }

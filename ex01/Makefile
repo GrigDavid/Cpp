@@ -1,7 +1,7 @@
 CC = c++ -Wall -Wextra -Werror -std=c++98#should it be called CC? idk
-SRCS = megaphone.cpp
+SRCS = Contact.cpp PhoneBook.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = megaphone
+NAME = PhoneBook
 
 
 all: $(NAME)
