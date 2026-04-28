@@ -6,20 +6,21 @@
 class Contact{
 	public:
 		Contact();
-		void	setContact(
+		Contact(const Contact& newCon);
+		Contact(
 			std::string firstName,
 			std::string lastName,
 			std::string nickname,
 			std::string phoneNumber,
 			std::string darkestSecret,
 			int id);
+		void operator=(const Contact& newCon);
 		std::string	getFirstName() const;
 		std::string	getLastName() const;
 		std::string	getNickname() const;
 		std::string	getPhoneNumber() const;
 		std::string	getDarkestSecret() const;
 		int			getId() const;
-		void		printContact() const;
 		~Contact();
 	private:
 		std::string	m_firstName;
@@ -28,7 +29,6 @@ class Contact{
 		std::string	m_phoneNumber;
 		std::string	m_darkestSecret;
 		int			m_id;
-		std::string	trimString(std::string str) const;
 };
 
 #endif

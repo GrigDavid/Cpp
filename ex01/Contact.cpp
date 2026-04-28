@@ -6,11 +6,22 @@ Contact::Contact()
 {
 };
 
+Contact::Contact(const Contact& newCon)
+{
+	m_firstName = newCon.m_firstName;
+	m_lastName = newCon.m_lastName;
+	m_nickname = newCon.m_nickname;
+	m_phoneNumber = newCon.m_phoneNumber;
+	m_darkestSecret = newCon.m_darkestSecret;
+	m_id = newCon.m_id;
+}
+
 Contact::~Contact()
 {
+	std::cout <<"merav" << m_id <<std::endl;
 };
 
-void	Contact::setContact(
+Contact::Contact(
 std::string firstName,
 std::string lastName,
 std::string nickname,
@@ -24,6 +35,15 @@ int id)
 	m_phoneNumber = phoneNumber;
 	m_darkestSecret = darkestSecret;
 	m_id = id;
+}
+void Contact::operator=(const Contact& newCon)
+{
+	m_firstName = newCon.m_firstName;
+	m_lastName = newCon.m_lastName;
+	m_nickname = newCon.m_nickname;
+	m_phoneNumber = newCon.m_phoneNumber;
+	m_darkestSecret = newCon.m_darkestSecret;
+	m_id = newCon.m_id;
 }
 
 std::string	Contact::getFirstName() const
@@ -55,25 +75,3 @@ int Contact::getId()const
 {
 	return m_id;
 };
-
-std::string Contact::trimString(std::string str) const
-{
-	if (str.length() > 10)
-		return (str.substr(0, 9) + ".");
-	return (str);
-}
-
-void Contact::printContact() const
-{
-	std::cout << std::setw(10) << std::right << m_id << "|";
-	std::cout << std::setw(10) << trimString(m_firstName) << "|";
-	std::cout << std::setw(10) << trimString(m_lastName) << "|";
-	std::cout << std::setw(10) << trimString(m_nickname) << std::endl;
-	
-	
-	
-	
-	
-	
-	//iomanip
-}

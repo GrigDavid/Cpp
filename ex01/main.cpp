@@ -1,11 +1,10 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+#include <iomanip>
+#include <iostream>
 
 int	main()
 {
 	PhoneBook ph;
-	Contact	c;
-	c.setContact("Gagik", "Surenyan", "Gagoooo", "011223344", "likes being pet", 0);
-	ph.AddContact(c);
-	ph.SearchContact(0);
+	ph.InitConsole();
 }
