@@ -5,7 +5,7 @@
 
 PhoneBook::PhoneBook()
 {
-	m_lastId = 0;
+	_lastId = 0;
 }
 
 PhoneBook::~PhoneBook()
@@ -28,11 +28,11 @@ void PhoneBook::printContact(Contact &C) const
 
 void	PhoneBook::SearchContact(int id)
 {
-	for (int i = 0; i < 8 && i < m_lastId; i++)
+	for (int i = 0; i < 8 && i < _lastId; i++)
 	{
-		if (m_Contacts[i].getId() == id)
+		if (_Contacts[i].getId() == id)
 		{
-			printContact(m_Contacts[i]);
+			printContact(_Contacts[i]);
 			return ;
 		}
 	}
@@ -41,10 +41,10 @@ void	PhoneBook::SearchContact(int id)
 
 void	PhoneBook::AddContact(const Contact& newContact)
 {
-	m_Contacts[m_lastId] = newContact;
-	m_lastId++;
-	if (m_lastId == 8)
-	 m_lastId = 0;
+	_Contacts[_lastId] = newContact;
+	_lastId++;
+	if (_lastId == 8)
+	 _lastId = 0;
 }
 
 void	PhoneBook::InitConsole()
@@ -57,6 +57,10 @@ void	PhoneBook::InitConsole()
 		std::cout << "Choose an action :" << std::setw(10) << "ADD" << std::setw(10) << "SEARCH" << std::setw(10) << "EXIT" <<std::endl;
 		std::getline(std::cin, input);
 		//trim whitespaces
+		if (std::cin.eof())
+		{
+			break;
+		}
 		if (!input.compare("ADD"))
 		{
 			std::cout << "insert first name" << std::endl;
@@ -74,13 +78,12 @@ void	PhoneBook::InitConsole()
 			std::cout << "insert darkest secret" << std::endl;
 			std::string secret;
 			std::getline(std::cin, secret);
-			AddContact(Contact(firstName, lastName, nickName, number, secret, m_lastId));
+			AddContact(Contact(firstName, lastName, nickName, number, secret, _lastId));
 		}
 		else if (!input.compare("SEARCH"))
 		{
 			std::getline(std::cin, input);
-			// std::cout<<static_cast<int>(input[0] - '0')<<std::endl;
-			if (input.length() > 1 || input.empty())
+			if (input.length() != 1)
 				std::cout << "Invalid contact id" << std::endl;
 			else if (input[0] > '9' || input[0] < '0')
 				std::cout << "Invalid contact id" << std::endl;

@@ -6,19 +6,19 @@ Contact::Contact()
 {
 };
 
-Contact::Contact(const Contact& newCon)
+Contact::Contact(const Contact& other) :
+_firstName(other._firstName),
+_lastName(other._lastName),
+_nickname(other._nickname),
+_phoneNumber(other._phoneNumber),
+_darkestSecret(other._darkestSecret),
+_id(other._id)
 {
-	m_firstName = newCon.m_firstName;
-	m_lastName = newCon.m_lastName;
-	m_nickname = newCon.m_nickname;
-	m_phoneNumber = newCon.m_phoneNumber;
-	m_darkestSecret = newCon.m_darkestSecret;
-	m_id = newCon.m_id;
 }
 
 Contact::~Contact()
 {
-	std::cout <<"merav" << m_id <<std::endl;
+	std::cout <<"merav" << _id <<std::endl;
 };
 
 Contact::Contact(
@@ -27,51 +27,54 @@ std::string lastName,
 std::string nickname,
 std::string phoneNumber,
 std::string darkestSecret,
-int id)
+int id) :
+_firstName(firstName),
+_lastName(lastName),
+_nickname(nickname),
+_phoneNumber(phoneNumber),
+_darkestSecret(darkestSecret),
+_id(id)
 {
-	m_firstName = firstName;
-	m_lastName = lastName;
-	m_nickname = nickname;
-	m_phoneNumber = phoneNumber;
-	m_darkestSecret = darkestSecret;
-	m_id = id;
 }
-void Contact::operator=(const Contact& newCon)
+Contact& Contact::operator=(const Contact& other)
 {
-	m_firstName = newCon.m_firstName;
-	m_lastName = newCon.m_lastName;
-	m_nickname = newCon.m_nickname;
-	m_phoneNumber = newCon.m_phoneNumber;
-	m_darkestSecret = newCon.m_darkestSecret;
-	m_id = newCon.m_id;
+	if (this == &other)
+		return *this;
+	_firstName = other._firstName;
+	_lastName = other._lastName;
+	_nickname = other._nickname;
+	_phoneNumber = other._phoneNumber;
+	_darkestSecret = other._darkestSecret;
+	_id = other._id;
+	return (*this);
 }
 
 std::string	Contact::getFirstName() const
 {
-	return m_firstName;
+	return _firstName;
 };
 
 std::string	Contact::getLastName() const
 {
-	return m_lastName;
+	return _lastName;
 };
 
 std::string	Contact::getNickname() const
 {
-	return m_nickname;
+	return _nickname;
 };
 
 std::string	Contact::getPhoneNumber() const
 {
-	return m_phoneNumber;
+	return _phoneNumber;
 };
 
 std::string	Contact::getDarkestSecret() const
 {
-	return m_darkestSecret;
+	return _darkestSecret;
 };
 
 int Contact::getId()const
 {
-	return m_id;
+	return _id;
 };

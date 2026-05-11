@@ -14,7 +14,7 @@ class Contact{
 			std::string phoneNumber,
 			std::string darkestSecret,
 			int id);
-		void operator=(const Contact& newCon);
+		Contact& operator=(const Contact& other);
 		std::string	getFirstName() const;
 		std::string	getLastName() const;
 		std::string	getNickname() const;
@@ -23,12 +23,12 @@ class Contact{
 		int			getId() const;
 		~Contact();
 	private:
-		std::string	m_firstName;
-		std::string	m_lastName;
-		std::string	m_nickname;
-		std::string	m_phoneNumber;
-		std::string	m_darkestSecret;
-		int			m_id;
+		std::string	_firstName;
+		std::string	_lastName;
+		std::string	_nickname;
+		std::string	_phoneNumber;
+		std::string	_darkestSecret;
+		int			_id;
 };
 
 #endif

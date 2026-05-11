@@ -13,8 +13,8 @@ class	PhoneBook{
 		void	InitConsole();
 		~PhoneBook();
 	private:
-		Contact	m_Contacts[8];//replace with array<Contact, 8> maybe???
-		int		m_lastId;
+		Contact	_Contacts[8];
+		int		_lastId;
 		std::string	trimString(std::string str) const;
 		void	printContact(Contact &C) const;
 };
