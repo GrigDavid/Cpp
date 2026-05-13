@@ -2,7 +2,13 @@
 #include <iostream>
 #include <iomanip>
 
-Contact::Contact()
+Contact::Contact() :
+_firstName(),
+_lastName(),
+_nickname(),
+_phoneNumber(),
+_darkestSecret(),
+_id()
 {
 };
 
@@ -18,7 +24,6 @@ _id(other._id)
 
 Contact::~Contact()
 {
-	std::cout <<"merav" << _id <<std::endl;
 };
 
 Contact::Contact(
@@ -74,7 +79,7 @@ std::string	Contact::getDarkestSecret() const
 	return _darkestSecret;
 };
 
-int Contact::getId()const
+int Contact::getId() const
 {
 	return _id;
 };
