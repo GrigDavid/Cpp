@@ -23,7 +23,7 @@ void PhoneBook::printContact(Contact &C) const
 	std::cout << std::setw(10) << std::right << C.getId() << "|";
 	std::cout << std::setw(10) << trimString(C.getFirstName()) << "|";
 	std::cout << std::setw(10) << trimString(C.getLastName()) << "|";
-	std::cout << std::setw(10) << trimString(C.getNickname()) << std::left << std::endl;
+	std::cout << std::setw(10) << trimString(C.getNickname()) << std::endl;
 }
 
 void	PhoneBook::SearchContact(int id)

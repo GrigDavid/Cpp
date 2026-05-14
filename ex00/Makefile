@@ -1,4 +1,5 @@
-CC = c++ -Wall -Wextra -Werror -std=c++98#should it be called CC? idk
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = megaphone.cpp
 OBJS = $(SRCS:.cpp=.o)
 NAME = megaphone
@@ -7,10 +8,10 @@ NAME = megaphone
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 %.o: %.cpp
-	$(CC) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)

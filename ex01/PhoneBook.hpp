@@ -6,7 +6,6 @@
 class	PhoneBook{
 	public:
 		PhoneBook();
-		void	Input();
 		void	AddContact(const Contact& newContact);
 		void	SearchContact(int id);
 		void	InitConsole();
