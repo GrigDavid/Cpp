@@ -73,26 +73,34 @@ void	PhoneBook::initConsole()
 		std::getline(std::cin, input);
 		//trim whitespaces
 		if (std::cin.eof())
-		{
 			break;
-		}
 		if (!input.compare("ADD"))
 		{
 			std::cout << "insert first name" << std::endl;
 			std::string firstName;
 			std::getline(std::cin, firstName);
+			if (std::cin.eof())
+				break;
 			std::cout << "insert last name" << std::endl;
 			std::string lastName;
 			std::getline(std::cin, lastName);
+			if (std::cin.eof())
+				break;
 			std::cout << "insert nickname" << std::endl;
 			std::string nickName;
 			std::getline(std::cin, nickName);
+			if (std::cin.eof())
+				break;
 			std::cout << "insert phone number" << std::endl;
 			std::string number;
 			std::getline(std::cin, number);
+			if (std::cin.eof())
+				break;
 			std::cout << "insert darkest secret" << std::endl;
 			std::string secret;
 			std::getline(std::cin, secret);
+			if (std::cin.eof())
+				break;
 			addContact(Contact(firstName, lastName, nickName, number, secret, _lastId));
 		}
 		else if (!input.compare("SEARCH"))
@@ -104,6 +112,8 @@ void	PhoneBook::initConsole()
 			}
 			listContacts();
 			std::getline(std::cin, input);
+			if (std::cin.eof())
+				break;
 			if (input.length() != 1)
 				std::cout << "Invalid contact id" << std::endl;
 			else if (input[0] > '9' || input[0] < '0')
