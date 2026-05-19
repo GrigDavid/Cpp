@@ -27,7 +27,7 @@ void PhoneBook::printContactTabbed(const Contact &C) const
 
 void PhoneBook::printContact(const Contact &C)
 {
-	std::cout << trimString(C.getFirstName()) << "\n" << trimString(C.getLastName()) << "\n" << trimString(C.getNickname()) << "\n" << trimString(C.getDarkestSecret()) << std::endl;
+	std::cout << C.getFirstName() << "\n" << C.getLastName() << "\n" << C.getNickname() << "\n" << C.getDarkestSecret() << std::endl;
 }
 
 void	PhoneBook::displayContact(int id)
