@@ -3,9 +3,8 @@
 #include <string>
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook()
+PhoneBook::PhoneBook() : _lastId(0), _filled(false)
 {
-	_lastId = 0;
 }
 
 PhoneBook::~PhoneBook()
@@ -18,7 +17,7 @@ std::string PhoneBook::trimString(std::string str) const
 	return (str);
 }
 
-void PhoneBook::printContact(Contact &C) const
+void PhoneBook::printContactTabbed(const Contact &C) const
 {
 	std::cout << std::setw(10) << std::right << C.getId() << "|";
 	std::cout << std::setw(10) << trimString(C.getFirstName()) << "|";
@@ -26,7 +25,12 @@ void PhoneBook::printContact(Contact &C) const
 	std::cout << std::setw(10) << trimString(C.getNickname()) << std::endl;
 }
 
-void	PhoneBook::SearchContact(int id)
+void PhoneBook::printContact(const Contact &C)
+{
+	std::cout << trimString(C.getFirstName()) << "\n" << trimString(C.getLastName()) << "\n" << trimString(C.getNickname()) << "\n" << trimString(C.getDarkestSecret()) << std::endl;
+}
+
+void	PhoneBook::displayContact(int id)
 {
 	for (int i = 0; i < 8 && i < _lastId; i++)
 	{
@@ -39,15 +43,26 @@ void	PhoneBook::SearchContact(int id)
 	std::cout << "Invalid contact id" << std::endl;
 }
 
-void	PhoneBook::AddContact(const Contact& newContact)
+void	PhoneBook::addContact(const Contact& newContact)
 {
 	_Contacts[_lastId] = newContact;
 	_lastId++;
 	if (_lastId == 8)
-	 _lastId = 0;
+	{
+		_filled = true;
+		_lastId = 0;
+	}
 }
 
-void	PhoneBook::InitConsole()
+void	PhoneBook::listContacts() const
+{
+	for (int i = 0; (i < _lastId) || ((i < 8) && _filled); i++)
+	{
+		printContactTabbed(_Contacts[i]);
+	}
+}
+
+void	PhoneBook::initConsole()
 {
 	int	status = 1;
 	std::string input;
@@ -78,17 +93,25 @@ void	PhoneBook::InitConsole()
 			std::cout << "insert darkest secret" << std::endl;
 			std::string secret;
 			std::getline(std::cin, secret);
-			AddContact(Contact(firstName, lastName, nickName, number, secret, _lastId));
+			addContact(Contact(firstName, lastName, nickName, number, secret, _lastId));
 		}
 		else if (!input.compare("SEARCH"))
 		{
+			if (!_filled && _lastId == 0)
+			{
+				std::cout << "No contacts found" << std::endl;
+				continue ;
+			}
+			listContacts();
 			std::getline(std::cin, input);
 			if (input.length() != 1)
 				std::cout << "Invalid contact id" << std::endl;
 			else if (input[0] > '9' || input[0] < '0')
 				std::cout << "Invalid contact id" << std::endl;
 			else
-				SearchContact(static_cast<int>(input[0] - '0'));
+			{
+				displayContact(static_cast<int>(input[0] - '0'));
+			}
 		}
 		else if (!input.compare("EXIT"))
 		{

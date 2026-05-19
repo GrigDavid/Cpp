@@ -6,15 +6,18 @@
 class	PhoneBook{
 	public:
 		PhoneBook();
-		void	AddContact(const Contact& newContact);
-		void	SearchContact(int id);
-		void	InitConsole();
 		~PhoneBook();
+		void	addContact(const Contact& newContact);
+		void	listContacts() const;
+		void	displayContact(int id);
+		void	initConsole();
 	private:
 		Contact	_Contacts[8];
 		int		_lastId;
+		bool	_filled;
 		std::string	trimString(std::string str) const;
-		void	printContact(Contact &C) const;
+		void	printContactTabbed(const Contact &C) const;
+		void	printContact(const Contact &C) ;
 };
 
 #endif

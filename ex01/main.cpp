@@ -3,5 +3,5 @@
 int	main()
 {
 	PhoneBook ph;
-	ph.InitConsole();
+	ph.initConsole();
 }
