@@ -71,7 +71,6 @@ void	PhoneBook::initConsole()
 	{
 		std::cout << "Choose an action :" << std::setw(10) << "ADD" << std::setw(10) << "SEARCH" << std::setw(10) << "EXIT" <<std::endl;
 		std::getline(std::cin, input);
-		//trim whitespaces
 		if (std::cin.eof())
 			break;
 		if (!input.compare("ADD"))
